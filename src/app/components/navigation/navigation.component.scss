@@ -1,0 +1,29 @@
+mat-toolbar {
+  background: #1781e8 !important;
+  padding: 0 64px;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    width: 100%;
+    max-width: 1200px;
+
+    span {
+      &.title { margin-top: 3px; }
+
+      &.sections { font-size: 16px !important; }
+
+      a {
+        text-decoration: none;
+        color: #fff;
+
+        &.fs-16{
+          font-size: 16px;
+          font-weight: normal;
+        }
+      }
+    }
+  }
+}
+

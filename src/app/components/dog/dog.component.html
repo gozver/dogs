@@ -1,0 +1,20 @@
+<div class="container">
+  <h4>Razas de perro</h4>
+
+  <form [formGroup]="dogForm" novalidate>
+    <mat-form-field appearance="fill">
+      <mat-label>Seleccione una raza</mat-label>
+      <mat-select formControlName="breed" (selectionChange)="loadDogImages()">
+        <mat-option *ngFor="let breed of globals.breedsList" [value]="breed">
+          {{ breed }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+</div>
+
+<div class="container images" *ngIf="globals.imagesList.length>0">
+  <span *ngFor="let item of globals.imagesList; let i = index">
+    <img class="image" src="{{ item }}" alt="image {{ i }}" />
+  </span>
+</div>
