@@ -1,4 +1,22 @@
-<app-navigation></app-navigation>
+<mat-toolbar>
+  <div>
+    <span class="title">
+      <a routerLink="/">
+        <span>Prueba Técnica</span>
+      </a>
+    </span>
+
+    <span>
+      <a class="fs-16" mat-button routerLinkActive="active-link" routerLink="/">
+        <span>Inicio</span>
+      </a>
+      <a class="fs-16" mat-button routerLinkActive="active-link" routerLink="/dog">
+        <span>Perros</span>
+      </a>
+    </span>
+  </div>
+</mat-toolbar>
+
 
 <div class="container">
   <router-outlet></router-outlet>

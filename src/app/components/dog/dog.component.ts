@@ -23,12 +23,14 @@ export class DogComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.dogService.loadDogsBreeds().subscribe(response => {
-      this.globals.breedsList = Object.keys(response.message);
+    if (this.globals.breedsList.length === 0) {
+      this.dogService.loadDogsBreeds().subscribe(response => {
+        this.globals.breedsList = Object.keys(response.message);
 
-      console.log('---> Breeds List: ')
-      console.log(this.globals.breedsList);
-    });
+        console.log('---> Breeds List: ')
+        console.log(this.globals.breedsList);
+      });
+    }
   }
 
   // Getter for easy access to form fields

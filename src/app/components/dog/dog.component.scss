@@ -1,22 +1,18 @@
-.container {
-  max-width: 1200px;
-  margin: auto;
+mat-form-field {
+  width: 100%;
+}
 
-  mat-form-field {
-    width: 100%;
-  }
+button {
+  float: right;
+  width: 200px;
+}
 
-  button {
-    float: right;
-    width: 200px;
-  }
+.images {
+  margin-top: 50px;
+  box-sizing: border-box;
+}
 
-  &.images {
-    box-sizing: border-box;
-  }
-
-  .image {
-    padding-right: 5%;
-    max-height: 400px
-  }
+.image {
+  padding-right: 5%;
+  max-height: 400px
 }
