@@ -5,10 +5,10 @@ import { TranslateModule, TranslatePipe } from "@ngx-translate/core";
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule)
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   }, {
     path: 'dog',
-    loadChildren: () => import('./components/dog/dog.module').then(m => m.DogModule)
+    loadChildren: () => import('./dog/dog.module').then(m => m.DogModule)
   }, {
     path: '**',
     redirectTo: ''

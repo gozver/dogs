@@ -4,10 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
 
-import { Globals } from '../globals/globals';
+import { Globals } from '../_globals/globals';
 import { MessageService } from './message.service';
-
-import { Dog } from '../models/dog';
 
 @Injectable({
   providedIn: 'root'
@@ -20,22 +18,29 @@ export class DogService {
     private messageService: MessageService
   ) { }
 
-  loadDogsBreeds(): Observable<{ message: [], status: string }> {
-    console.log('--<> Running loadDogsBreeds service');
+  loadBreedsList(): Observable<{ message: [], status: string }> {
+    console.log('--<> Running loadBreedsList service');
 
     return this.http.get<{ message: [], status: string }>(`${this.globals.apiUrl}s/list/all`, {}).pipe(
-      tap(data => console.log('--<> Dogs obtained from loadDogsBreeds')), // : ' + JSON.stringify(data))),
-      catchError(this.handleError<{ message: [], status: string }>('loadDogsBreeds', { message: [], status: status }))
+      tap((data) => {
+        console.log('--<> Dogs obtained from loadBreedsList: '); // + JSON.stringify(Object.keys(data.message)));
+        this.globals.breedsList = Object.keys(data.message);
+        console.log(this.globals.breedsList);
+      }),
+      catchError(this.handleError<{ message: [], status: string }>('loadBreedsList', { message: [], status: status }))
     );
   }
 
-
-  loadDogsImages(): Observable<{ message: [], status: string }> {
-    console.log('--<> Running loadDogsImages service');
+  loadImagesList(): Observable<{ message: [], status: string }> {
+    console.log('--<> Running loadImagesList service');
 
     return this.http.get<{ message: [], status: string }>(`${this.globals.apiUrl}/${this.globals.breed}/images`, {}).pipe(
-      tap(data => console.log('--<> Dogs obtained from loadDogsImages')), // : ' + JSON.stringify(data))),
-      catchError(this.handleError<{ message: [], status: string }>('loadDogsImages', { message: [], status: status }))
+      tap((data) => {
+        console.log('--<> Dogs obtained from loadImagesList: '); // + JSON.stringify(data))),
+        this.globals.imagesList = data.message;
+        console.log(this.globals.imagesList);
+      }),
+      catchError(this.handleError<{ message: [], status: string }>('loadImagesList', { message: [], status: status }))
     );
   }
 

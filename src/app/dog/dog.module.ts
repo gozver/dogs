@@ -10,8 +10,7 @@ import { MatButtonModule } from "@angular/material/button";
 import { TranslateModule } from "@ngx-translate/core";
 
 import { DogRoutingModule } from './dog-routing.module';
-import { DogComponent } from './dog.component';
-
+import { DogComponent } from './component/dog.component';
 
 @NgModule({
   imports: [

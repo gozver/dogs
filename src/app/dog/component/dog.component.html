@@ -4,7 +4,7 @@
   <form [formGroup]="dogForm" novalidate>
     <mat-form-field appearance="fill">
       <mat-label>{{ 't.select_breed' | translate }}</mat-label>
-      <mat-select formControlName="breed" (selectionChange)="loadDogImages()">
+      <mat-select formControlName="breed" (selectionChange)="loadImagesList()">
         <mat-option *ngFor="let breed of globals.breedsList" [value]="breed">
           {{ breed }}
         </mat-option>
@@ -18,3 +18,4 @@
     <img class="image" src="{{ item }}" alt="image {{ i }}" />
   </span>
 </div>
+
