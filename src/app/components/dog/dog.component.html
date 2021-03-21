@@ -1,9 +1,9 @@
 <div class="container">
-  <h4>Razas de perro</h4>
+  <h4>{{ 't.dog_breeds' | translate }}</h4>
 
   <form [formGroup]="dogForm" novalidate>
     <mat-form-field appearance="fill">
-      <mat-label>Seleccione una raza</mat-label>
+      <mat-label>{{ 't.select_breed' | translate }}</mat-label>
       <mat-select formControlName="breed" (selectionChange)="loadDogImages()">
         <mat-option *ngFor="let breed of globals.breedsList" [value]="breed">
           {{ breed }}

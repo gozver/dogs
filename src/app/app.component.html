@@ -2,16 +2,25 @@
   <div>
     <span class="title">
       <a routerLink="/">
-        <span>Prueba Técnica</span>
+        <span>{{ 't.title' | translate }}</span>
       </a>
     </span>
 
     <span>
+      <mat-form-field>
+        <mat-select id="lang" #langSelect (selectionChange)="translate.use(langSelect.value)" [(value)]="selected">
+          <mat-option *ngFor="let lang of translate.getLangs()" [value]="lang">
+            {{ lang }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
       <a class="fs-16" mat-button routerLinkActive="active-link" routerLink="/">
-        <span>Inicio</span>
+        <span>{{ 't.home' | translate }}</span>
       </a>
+
       <a class="fs-16" mat-button routerLinkActive="active-link" routerLink="/dog">
-        <span>Perros</span>
+        <span>{{ 't.dogs' | translate }}</span>
       </a>
     </span>
   </div>

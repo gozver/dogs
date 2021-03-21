@@ -1,0 +1,10 @@
+{
+  "t": {
+    "title": "Test Técnico",
+    "home": "Inicio",
+    "dogs": "Perros",
+    "test": "Prueba técnica para ATSistemas",
+    "select_breed": "Seleccione una raza",
+    "dog_breeds": "Razas de perro"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "t": {
+    "title": "Technical Test",
+    "home": "Home",
+    "dogs": "Dogs",
+    "test": "Technical test for ATSistemas",
+    "select_breed": "Select breed",
+    "dog_breeds": "Dog breeds"
+  }
+}

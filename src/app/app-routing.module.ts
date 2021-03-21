@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { TranslateModule, TranslatePipe } from "@ngx-translate/core";
 
 const routes: Routes = [
   {
@@ -15,7 +16,15 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forChild(routes),
+    RouterModule.forRoot(routes),
+    TranslateModule
+  ],
+  exports: [
+    RouterModule,
+    TranslatePipe
+  ],
+  providers: [TranslateModule]
 })
 export class AppRoutingModule { }

@@ -12,11 +12,18 @@ mat-toolbar {
 
     span {
       &.title {
-        margin-top: 3px;
+        margin-top: 12px;
       }
 
       &.sections {
         font-size: 16px !important;
+      }
+
+      mat-form-field {
+        width: 50px;
+        color: #fff;
+        margin-right: 10px;
+        font-size: 14px !important;
       }
 
       a {
