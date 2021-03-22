@@ -5,7 +5,7 @@
     <mat-form-field appearance="fill">
       <mat-label>{{ 't.select_breed' | translate }}</mat-label>
       <mat-select formControlName="breed" (selectionChange)="loadImagesList()">
-        <mat-option *ngFor="let breed of globals.breedsList" [value]="breed">
+        <mat-option *ngFor="let breed of ($breedsList | async)" [value]="breed">
           {{ breed }}
         </mat-option>
       </mat-select>
@@ -13,8 +13,8 @@
   </form>
 </div>
 
-<div class="container images" *ngIf="globals.imagesList.length>0">
-  <span *ngFor="let item of globals.imagesList; let i = index">
+<div class="container images" *ngIf="($imagesList | async)?.length!==0">
+  <span *ngFor="let item of $imagesList | async; let i = index">
     <img class="image" src="{{ item }}" alt="image {{ i }}" />
   </span>
 </div>
