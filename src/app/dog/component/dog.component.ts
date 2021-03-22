@@ -25,6 +25,8 @@ export class DogComponent implements OnInit {
     private dogStore: Store<AppState>
   ) { }
 
+  //se ha producido un error al cargar el servicio
+
   ngOnInit() {
     this.dogStore.dispatch({ type: '[DOG] LOAD_BREEDS_LIST' });
   }

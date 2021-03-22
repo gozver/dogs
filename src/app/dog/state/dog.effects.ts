@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, mergeMap, catchError, tap } from 'rxjs/operators';
+
 import { DogService } from '../../_services/dog.service';
 import { TranslateService } from "@ngx-translate/core";
 
