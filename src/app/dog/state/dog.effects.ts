@@ -1,34 +1,50 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, mergeMap, catchError } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { map, mergeMap, catchError, tap } from 'rxjs/operators';
 import { DogService } from '../../_services/dog.service';
+import { TranslateService } from "@ngx-translate/core";
+
+import Swal from "sweetalert2";
 
 @Injectable()
 export class DogEffects {
 
   loadBreedsList$ = createEffect(() => this.actions$.pipe(
-    ofType('[Dog] Load Breeds'),
+    ofType('[DOG] LOAD_BREEDS_LIST'),
     mergeMap(() => this.dogService.loadBreedsList()
       .pipe(
-        map(breeds => ({ type: '[Dog] Load Breeds Success', payload: Object.keys(breeds.message) })),
-        catchError(() => of({ type: '[Dog] Load Breeds Error' }))
+        map(breeds => ({ type: '[DOG] LOAD_BREEDS_LIST_SUCCESS', breeds: Object.keys(breeds.message) })),
+        catchError((err) => {
+          this.showPopup(err);
+          return [({ type: '[DOG] LOAD_IMAGES_LIST_FAIL' })]
+        })
       ))
     )
   );
 
   loadImagesList$ = createEffect(() => this.actions$.pipe(
-    ofType('[Dog] Load Images List'),
-    mergeMap(() => this.dogService.loadImagesList()
+    ofType('[DOG] LOAD_IMAGES_LIST'),
+    mergeMap(({ breed }) => this.dogService.loadImagesList(breed)
       .pipe(
-        map(images => ({ type: '[Dog] Load Images List Success', payload: Object.keys(images.message) })),
-        catchError(() => of({ type: '[Dog] Load Images List Error' }))
+        map((images) => ({ type: '[DOG] LOAD_IMAGES_LIST_SUCCESS', images: images.message })),
+        catchError((err) => {
+          this.showPopup(err);
+          return [({ type: '[DOG] LOAD_IMAGES_LIST_FAIL' })]
+        })
       ))
     )
   );
 
   constructor(
     private actions$: Actions,
-    private dogService: DogService
-  ) { }
+    private dogService: DogService,
+    private translate: TranslateService
+  ) {
+  }
+
+  showPopup(err: any) {
+    this.translate.get('t.popup').subscribe((translation: any)=> {
+      Swal.fire({ icon: 'error', title: `Error ${err.status}`, text: translation});
+    });
+  }
 }

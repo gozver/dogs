@@ -1,25 +1,29 @@
 import { createAction, props } from '@ngrx/store';
 
-export const loadBreeds = createAction(
-  '[Dog] Load Breeds'
+export const  setCurrentBreed = createAction(
+  '[DOG] SET_CURRENT_BREED', props<{ breed: string }>()
 );
 
-export const loadBreedsSuccess = createAction(
-  '[Dog] Load Breeds Success', props<{ breeds: string[] }>()
+export const loadBreedsList = createAction(
+  '[DOG] LOAD_BREEDS_LIST'
 );
 
-export const loadBreedsError = createAction(
-  '[Dog] Load Breeds Error', props<{ error: string }>()
+export const loadBreedsListSuccess = createAction(
+  '[DOG] LOAD_BREEDS_LIST_SUCCESS', props<{ breeds: string[] }>()
+);
+
+export const loadBreedsListFail = createAction(
+  '[DOG] LOAD_BREEDS_LIST_FAIL', props<{ error: string }>()
 );
 
 export const loadImagesList = createAction(
-  '[Dog] Load Images List'
+  '[DOG] LOAD_IMAGES_LIST', props<{ breed: string }>()
 );
 
 export const loadImagesListSuccess = createAction(
-  '[Dog] Load Images List Success', props<{ images: string[] }>()
+  '[DOG] LOAD_IMAGES_LIST_SUCCESS', props<{ images: string[] }>()
 );
 
-export const loadImagesListError = createAction(
-  '[Dog] Load Breeds Error', props<{ error: string }>()
+export const loadImagesListFail = createAction(
+  '[DOG] LOAD_IMAGES_LIST_FAIL', props<{ error: string }>()
 );

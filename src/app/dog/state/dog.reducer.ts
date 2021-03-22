@@ -14,16 +14,16 @@ export const initialState: DogState = {
   breed: '',
   breedsList: [],
   imagesList: [],
-  error: 'error'
+  error: ''
 };
 
 const _dogReducer = createReducer(
   initialState,
-  on(DogActions.loadBreedsSuccess, (state, { breeds })   => ({ breed: '', breedsList: breeds, imagesList: [], error: '' })),
-  on(DogActions.loadBreedsError,   (state, { error })    => ({ breed: '', breedsList: [], imagesList: [], error: error })),
-
-  on(DogActions.loadImagesListSuccess, (state, { images }) => ({ breed: '', breedsList: [], imagesList: images, error: '' })),
-  on(DogActions.loadImagesListError,   (state, { error })  => ({ breed: '', breedsList: [], imagesList: [], error: error })),
+  on(DogActions.setCurrentBreed,       (state, { breed })  => ({ ...state, breed: breed })),
+  on(DogActions.loadBreedsListSuccess, (state, { breeds }) => ({ ...state, breedsList: breeds })),
+  on(DogActions.loadBreedsListFail,    (state, { error })  => ({ ...state, error: error })),
+  on(DogActions.loadImagesListSuccess, (state, { images }) => ({ ...state, imagesList: images })),
+  on(DogActions.loadImagesListFail,    (state, { error })  => ({ ...state, error: error })),
 );
 
 export function dogReducer(state = initialState, action: Action): DogState {

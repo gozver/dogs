@@ -5,6 +5,7 @@
     "dogs": "Perros",
     "test": "Prueba técnica para ATSistemas",
     "select_breed": "Seleccione una raza",
-    "dog_breeds": "Razas de perro"
+    "dog_breeds": "Razas de perro",
+    "popup" : "Se ha producido un error al cargar el servicio"
   }
 }

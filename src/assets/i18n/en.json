@@ -5,6 +5,7 @@
     "dogs": "Dogs",
     "test": "Technical test for ATSistemas",
     "select_breed": "Select breed",
-    "dog_breeds": "Dog breeds"
+    "dog_breeds": "Dog breeds",
+    "popup" : "An error occurred while loading the service"
   }
 }

@@ -21,6 +21,8 @@ import { HomeModule } from "./home/home.module";
 
 import { Globals } from './_globals/globals'
 
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 
@@ -43,6 +45,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     MatSelectModule,
     HomeModule,
     DogModule,
+    SweetAlert2Module.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -55,7 +58,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: false,
-      // features: { pause: false, lock: true, persist: true }
+      features: { pause: false, lock: true, persist: true }
     }),
 
   ],

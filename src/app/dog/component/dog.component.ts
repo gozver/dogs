@@ -1,10 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from "@ngrx/store";
 
-import { DogState } from '../state/dog.reducer';
-
-import { Globals } from '../../_globals/globals'
+import { AppState } from "../../app.state";
 import { DogService } from "../../_services/dog.service";
 
 @Component({
@@ -19,23 +17,16 @@ export class DogComponent implements OnInit {
     imagesList: new FormControl()
   });
 
+  $breedsList = this.dogStore.select(state => state.dog.breedsList); //.pipe(tap(breedsList => console.log(breedsList)));
+  $imagesList = this.dogStore.select(state => state.dog.imagesList); //.pipe(tap(imagesList => console.log(imagesList)));
+
   constructor(
-    public globals: Globals,
     private dogService: DogService,
-    private dogStore: Store<DogState>
+    private dogStore: Store<AppState>
   ) { }
 
   ngOnInit() {
-    if (this.globals.breedsList.length === 0) {
-      this.dogStore.dispatch({ type: '[Dog] Load Breeds' });
-
-      // this.dogService.loadBreedsList().subscribe(response => {
-      //   this.globals.breedsList = Object.keys(response.message);
-      //
-      //   console.log('---> Breeds List: ')
-      //   console.log(this.globals.breedsList);
-      // });
-    }
+    this.dogStore.dispatch({ type: '[DOG] LOAD_BREEDS_LIST' });
   }
 
   // Getter for easy access to dogForm fields
@@ -44,16 +35,7 @@ export class DogComponent implements OnInit {
   }
 
   loadImagesList(): void {
-    this.globals.breed = this.df.breed.value;
-    console.log(`---> Selected breed: ${this.globals.breed}`);
-
-    this.dogStore.dispatch({ type: '[Dog] Load Images List' });
-
-    // this.dogService.loadImagesList().subscribe(response => {
-    //   this.globals.imagesList = response.message;
-    //
-    //   console.log('---> Images List: ')
-    //   console.log(this.globals.imagesList);
-    // });
+    this.dogStore.dispatch({ type: '[DOG] SET_CURRENT_BREED', breed: this.df.breed.value });
+    this.dogStore.dispatch({ type: '[DOG] LOAD_IMAGES_LIST', breed: this.df.breed.value });
   }
 }
